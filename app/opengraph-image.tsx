@@ -82,17 +82,35 @@ export default async function Image() {
             </div>
           </div>
 
+          {/* Explicit CTA — the OG card is often the first thing a link
+              preview shows; a clear conversion action makes it click-through
+              friendlier. Rendered as a pill so it reads as tappable. */}
           <div
             style={{
               display: "flex",
-              gap: 24,
-              fontSize: 18,
-              color: "#4E4A44",
+              alignItems: "center",
+              gap: 20,
             }}
           >
-            <span>pokopayng.com</span>
-            <span>·</span>
-            <span>Africa/Lagos</span>
+            <div
+              style={{
+                display: "flex",
+                alignItems: "center",
+                gap: 10,
+                background: "#1F7A44",
+                color: "white",
+                fontSize: 22,
+                fontWeight: 600,
+                letterSpacing: -0.2,
+                padding: "14px 26px",
+                borderRadius: 999,
+              }}
+            >
+              Talk to us — pokopayng.com →
+            </div>
+            <span style={{ fontSize: 18, color: "#4E4A44" }}>
+              Built in Lagos · Africa/Lagos
+            </span>
           </div>
         </div>
 
