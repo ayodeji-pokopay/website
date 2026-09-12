@@ -1,4 +1,6 @@
 import { ImageResponse } from "next/og";
+import { readFile } from "node:fs/promises";
+import { join } from "node:path";
 
 // Image metadata
 export const alt = "Pokopay — Payments infrastructure for Nigerian merchants";
@@ -7,9 +9,15 @@ export const contentType = "image/png";
 
 // Dynamic OG card. Rendered at build time (statically optimized) unless a
 // request-time API is used inside — we deliberately keep this pure so it
-// caches. No custom font file — ImageResponse falls back to a sensible sans
-// weight, which is fine for the split-canvas card we render here.
+// caches. Reads the real Pokopay symbol from public/brand/symbol.png and
+// inlines it as a data URI so ImageResponse can render it without a
+// network fetch. No custom font file — ImageResponse falls back to a
+// sensible sans weight, which is fine for the split-canvas card.
 export default async function Image() {
+  const symbolPath = join(process.cwd(), "public", "brand", "symbol.png");
+  const symbolBuffer = await readFile(symbolPath);
+  const symbolSrc = `data:image/png;base64,${symbolBuffer.toString("base64")}`;
+
   return new ImageResponse(
     (
       <div
@@ -18,7 +26,7 @@ export default async function Image() {
           height: "100%",
           display: "flex",
           background: "#F7F4EF",
-          color: "#1E1A16",
+          color: "#0F1F35",
           fontFamily: "system-ui, sans-serif",
         }}
       >
@@ -32,48 +40,19 @@ export default async function Image() {
             justifyContent: "space-between",
           }}
         >
-          <div style={{ display: "flex", alignItems: "center", gap: 16 }}>
-            {/* Logo mark — matches components/nav.tsx LogoMark */}
-            <div
-              style={{
-                position: "relative",
-                width: 52,
-                height: 52,
-                borderRadius: 13,
-                background: "#1F7A44",
-                color: "white",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                fontSize: 34,
-                fontWeight: 700,
-                fontFamily: "Georgia, serif",
-                lineHeight: 1,
-                paddingBottom: 2,
-              }}
-            >
-              P
-              {/* Mint pulse */}
-              <div
-                style={{
-                  position: "absolute",
-                  right: 6,
-                  bottom: 6,
-                  width: 9,
-                  height: 9,
-                  borderRadius: 9,
-                  background: "#7EE0A6",
-                }}
-              />
-            </div>
+          <div style={{ display: "flex", alignItems: "center", gap: 18 }}>
+            {/* Real Pokopay symbol — green arch + navy circle */}
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src={symbolSrc} width={64} height={64} alt="" />
             <span
               style={{
-                fontSize: 30,
-                fontWeight: 600,
-                letterSpacing: -0.6,
+                fontSize: 40,
+                fontWeight: 700,
+                letterSpacing: -0.8,
+                color: "#0F1F35",
               }}
             >
-              Pokopay
+              pokopay
             </span>
           </div>
 
@@ -85,6 +64,7 @@ export default async function Image() {
                 letterSpacing: -1.5,
                 fontWeight: 500,
                 maxWidth: 640,
+                color: "#0F1F35",
               }}
             >
               The payment rails your merchants and terminals were waiting for.
@@ -116,11 +96,11 @@ export default async function Image() {
           </div>
         </div>
 
-        {/* Right column — brand block */}
+        {/* Right column — brand block (dark navy for logo consistency) */}
         <div
           style={{
             flex: 1,
-            background: "#1F7A44",
+            background: "#0F1F35",
             color: "white",
             padding: "80px 64px",
             display: "flex",
@@ -134,6 +114,7 @@ export default async function Image() {
               letterSpacing: 3,
               textTransform: "uppercase",
               opacity: 0.75,
+              color: "#7EA85E",
             }}
           >
             Merchants · Partners · CSAs
@@ -165,6 +146,7 @@ function Row({ label, value }: { label: string; value: string }) {
           letterSpacing: 2,
           textTransform: "uppercase",
           opacity: 0.7,
+          color: "#7EA85E",
         }}
       >
         {label}

@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { useState } from "react";
 import { Menu, X, ArrowUpRight } from "lucide-react";
 
@@ -18,9 +19,9 @@ export function SiteNav() {
   return (
     <header className="sticky top-0 z-40 backdrop-blur bg-[color:var(--color-canvas)]/85 border-b border-[color:var(--color-line)]">
       <div className="max-w-6xl mx-auto px-5 sm:px-8 h-16 flex items-center justify-between gap-6">
-        <Link href="/" className="flex items-center gap-2 group" aria-label="Pokopay home">
-          <LogoMark className="h-7 w-auto" />
-          <span className="font-serif text-xl font-medium tracking-tight">Pokopay</span>
+        <Link href="/" className="flex items-center gap-2.5 group" aria-label="Pokopay home">
+          <LogoMark className="h-8 w-8" />
+          <span className="text-xl font-bold tracking-tight text-[color:var(--color-ink)] lowercase">pokopay</span>
         </Link>
 
         <nav className="hidden md:flex items-center gap-1 text-sm">
@@ -93,22 +94,21 @@ export function SiteNav() {
   );
 }
 
-/** Pokopay mark — rounded-square in brand green with a geometric white "P"
- *  and a mint pulse dot at the bottom-right that reads as "live rails".
- *  All strokes are pure SVG so it renders crisp at any size and swaps colour
- *  via the theme tokens.  If you get a real logo file later, replace the
- *  contents of this function — every consumer imports LogoMark. */
+/** Pokopay mark — the brand symbol (green arch over a navy filled circle
+ *  with white slots).  Source of truth is public/brand/symbol.png, mirrored
+ *  from the mobile app's branding folder so every product ships the same
+ *  identity.  Give a `className` for sizing; leave width/height as intrinsic
+ *  and let CSS drive the layout. */
 export function LogoMark({ className }: { className?: string }) {
   return (
-    <svg viewBox="0 0 40 40" fill="none" className={className} aria-hidden>
-      <rect x="0" y="0" width="40" height="40" rx="10" fill="var(--color-brand)" />
-      {/* Geometric "P" — squared bowl, deliberate weight */}
-      <path
-        d="M12 10h11.25a6.75 6.75 0 0 1 0 13.5H16V30h-4V10Zm4 3.75V19.75h7.25a3 3 0 0 0 0-6H16Z"
-        fill="white"
-      />
-      {/* Mint pulse — reads as "live" */}
-      <circle cx="30.5" cy="30.5" r="2.75" fill="#7EE0A6" />
-    </svg>
+    <Image
+      src="/brand/symbol.png"
+      alt=""
+      width={192}
+      height={192}
+      priority
+      className={className}
+      aria-hidden
+    />
   );
 }

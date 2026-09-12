@@ -38,9 +38,9 @@ export function SiteFooter() {
     <footer className="border-t border-[color:var(--color-line)] bg-[color:var(--color-surface)] mt-24">
       <div className="max-w-6xl mx-auto px-5 sm:px-8 py-12 grid gap-10 md:grid-cols-4">
         <div>
-          <div className="flex items-center gap-2 mb-3">
-            <LogoMark className="h-6 w-auto" />
-            <span className="font-serif text-lg font-medium">Pokopay</span>
+          <div className="flex items-center gap-2.5 mb-3">
+            <LogoMark className="h-7 w-7" />
+            <span className="text-lg font-bold tracking-tight lowercase">pokopay</span>
           </div>
           <p className="text-sm text-[color:var(--color-ink-soft)] max-w-xs">
             Payments infrastructure for Nigerian merchants, acquirers and CSAs.
