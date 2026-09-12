@@ -11,13 +11,13 @@ Every Pokopay terminal reports a heartbeat: battery percentage, connection type,
 
 ## The verdict lives on the server
 
-The API returns a composite `health` field per terminal — one of `healthy`, `degraded` or `offline` — alongside a `healthReasons` array of short strings like `"battery_low"`, `"printer_paper_out"`, `"connection_intermittent"` or `"stale_heartbeat"`. The verdict is computed inside the service, from the same raw signals a consumer would see, but it&apos;s the service that decides.
+The API returns a composite `health` field per terminal — one of `healthy`, `degraded` or `offline` — alongside a `healthReasons` array of short strings like `"battery_low"`, `"printer_paper_out"`, `"connection_intermittent"` or `"stale_heartbeat"`. The verdict is computed inside the service, from the same raw signals a consumer would see, but it's the service that decides.
 
 That's a deliberate choice. If every consumer — dashboard, mobile app, partner integrations — computed the verdict itself, we'd have three versions of "what counts as degraded" and they'd disagree the first time we changed a threshold. Server-computed means one place to reason about it, one place to audit, one place to roll out a change.
 
-## Consumers render, they don&apos;t derive
+## Consumers render, they don't derive
 
-The rule for the dashboard is short: **render the verdict, don&apos;t derive it.** If the API says `degraded`, we paint the amber pill. If `healthReasons` contains `battery_low`, we show "Battery low" in the reasons list. We don't look at the battery percentage and second-guess.
+The rule for the dashboard is short: **render the verdict, don't derive it.** If the API says `degraded`, we paint the amber pill. If `healthReasons` contains `battery_low`, we show "Battery low" in the reasons list. We don't look at the battery percentage and second-guess.
 
 This matters because it keeps the operator's mental model consistent with the API's. A support engineer looking at a health record in the database sees the same story as the merchant looking at their fleet board. When we tune the threshold — "battery low" from 20% to 15%, say — the change lands everywhere at once, because it's one code path in one service.
 
@@ -27,6 +27,6 @@ For the record, the current heartbeat carries: `batteryPercent` (0–100), `conn
 
 ## Why this is a note, not a spec
 
-The full spec lives in the API handoff document. This note exists because when a new engineer joins the dashboard team, the first question is always some flavour of "why don&apos;t we just check the battery here?" The answer — that the composite verdict is a contract, and the client is a renderer — is easier to internalise from a short piece of prose than from a schema.
+The full spec lives in the API handoff document. This note exists because when a new engineer joins the dashboard team, the first question is always some flavour of "why don't we just check the battery here?" The answer — that the composite verdict is a contract, and the client is a renderer — is easier to internalise from a short piece of prose than from a schema.
 
 If you're integrating with the Pokopay API, treat `health` and `healthReasons` as authoritative. Everything else in the heartbeat is for display, or for your own tooling — never for computing a verdict a merchant will see.

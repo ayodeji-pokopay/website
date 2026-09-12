@@ -16,6 +16,12 @@ import path from "node:path";
  * `` `code` `` and `[text](href)` links. Everything else falls through as a
  * paragraph. Escapes user content before applying any inline markup, so it's
  * safe to render into `dangerouslySetInnerHTML`.
+ *
+ * AUTHORING NOTE: write plain characters in markdown source — a straight
+ * apostrophe ('), a real em-dash (—), curly quotes (" "). The renderer
+ * escapes `&` to `&amp;`, so if you write `&apos;` in the .mdx it comes out
+ * as literal `&apos;` in the browser. HTML entities belong in JSX, not
+ * here. (React lint expects them; markdown doesn't.)
  */
 
 export type Post = {
