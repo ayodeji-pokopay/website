@@ -1,0 +1,48 @@
+@import "tailwindcss";
+
+/**
+ * Design tokens for the marketing site. Kept intentionally distinct from the
+ * dashboard's palette — the dashboard leans navy + green as an operator
+ * surface, the marketing site leans warm-neutral background + green accent
+ * as a product/brand surface. Change the CSS custom properties here to
+ * change the theme in one place.
+ */
+@theme {
+  --color-brand: #1F7A44;
+  --color-brand-deep: #124D2A;
+  --color-brand-soft: #E8F3EC;
+
+  --color-ink: #131614;
+  --color-ink-soft: #4B534E;
+  --color-ink-faint: #7A827D;
+
+  --color-canvas: #F7F4EF;
+  --color-surface: #FFFFFF;
+  --color-line: #E9E3DA;
+  --color-line-strong: #D3CAB9;
+
+  --color-accent: #E36435;
+
+  --font-serif: "Fraunces", Georgia, serif;
+  --font-sans: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+
+  --shadow-soft: 0 1px 2px rgb(19 22 20 / 0.05), 0 10px 30px rgb(19 22 20 / 0.06);
+}
+
+html {
+  color-scheme: light;
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--color-canvas);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  line-height: 1.55;
+}
+
+::selection {
+  background: var(--color-brand);
+  color: white;
+}
