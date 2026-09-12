@@ -32,29 +32,45 @@ export default async function Image() {
             justifyContent: "space-between",
           }}
         >
-          <div style={{ display: "flex", alignItems: "center", gap: 14 }}>
-            {/* Logo mark */}
+          <div style={{ display: "flex", alignItems: "center", gap: 16 }}>
+            {/* Logo mark — matches components/nav.tsx LogoMark */}
             <div
               style={{
-                width: 44,
-                height: 44,
-                borderRadius: 12,
+                position: "relative",
+                width: 52,
+                height: 52,
+                borderRadius: 13,
                 background: "#1F7A44",
                 color: "white",
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
-                fontSize: 24,
+                fontSize: 34,
                 fontWeight: 700,
+                fontFamily: "Georgia, serif",
+                lineHeight: 1,
+                paddingBottom: 2,
               }}
             >
               P
+              {/* Mint pulse */}
+              <div
+                style={{
+                  position: "absolute",
+                  right: 6,
+                  bottom: 6,
+                  width: 9,
+                  height: 9,
+                  borderRadius: 9,
+                  background: "#7EE0A6",
+                }}
+              />
             </div>
             <span
               style={{
-                fontSize: 26,
+                fontSize: 30,
                 fontWeight: 600,
-                letterSpacing: -0.4,
+                letterSpacing: -0.6,
               }}
             >
               Pokopay

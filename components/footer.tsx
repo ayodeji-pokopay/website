@@ -15,6 +15,8 @@ const groups = [
     title: "Company",
     links: [
       { href: "/company", label: "About" },
+      { href: "/blog", label: "Blog" },
+      { href: "/careers", label: "Careers" },
       { href: "/contact", label: "Contact" },
       { href: "https://dashboard.pokopayng.com", label: "Sign in", external: true },
     ],
@@ -24,6 +26,8 @@ const groups = [
     links: [
       { href: "/legal/terms", label: "Terms of service" },
       { href: "/legal/privacy", label: "Privacy policy" },
+      { href: "/legal/cookies", label: "Cookies" },
+      { href: "/legal/acceptable-use", label: "Acceptable use" },
       { href: "/legal/pci-notice", label: "PCI notice" },
     ],
   },

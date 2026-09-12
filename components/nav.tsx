@@ -10,6 +10,7 @@ const links = [
   { href: "/security", label: "Security" },
   { href: "/pricing", label: "Pricing" },
   { href: "/company", label: "Company" },
+  { href: "/blog", label: "Blog" },
 ];
 
 export function SiteNav() {
@@ -92,16 +93,22 @@ export function SiteNav() {
   );
 }
 
-/** Placeholder logo mark — swap for the real SVG when you have it. Keeps the
- *  visual identity consistent without a hardcoded raster asset. */
+/** Pokopay mark — rounded-square in brand green with a geometric white "P"
+ *  and a mint pulse dot at the bottom-right that reads as "live rails".
+ *  All strokes are pure SVG so it renders crisp at any size and swaps colour
+ *  via the theme tokens.  If you get a real logo file later, replace the
+ *  contents of this function — every consumer imports LogoMark. */
 export function LogoMark({ className }: { className?: string }) {
   return (
-    <svg viewBox="0 0 32 32" fill="none" className={className} aria-hidden>
-      <circle cx="16" cy="16" r="15" fill="var(--color-brand)" />
+    <svg viewBox="0 0 40 40" fill="none" className={className} aria-hidden>
+      <rect x="0" y="0" width="40" height="40" rx="10" fill="var(--color-brand)" />
+      {/* Geometric "P" — squared bowl, deliberate weight */}
       <path
-        d="M10 22V10h6a4 4 0 1 1 0 8h-3v4h-3Zm3-7h3a1.5 1.5 0 1 0 0-3h-3v3Z"
+        d="M12 10h11.25a6.75 6.75 0 0 1 0 13.5H16V30h-4V10Zm4 3.75V19.75h7.25a3 3 0 0 0 0-6H16Z"
         fill="white"
       />
+      {/* Mint pulse — reads as "live" */}
+      <circle cx="30.5" cy="30.5" r="2.75" fill="#7EE0A6" />
     </svg>
   );
 }
