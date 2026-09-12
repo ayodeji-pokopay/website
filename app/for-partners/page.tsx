@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { Building2, Users, Network, GitBranch, ShieldCheck, Palette } from "lucide-react";
 import { PageShell, FeatureRow, BottomCTA } from "@/components/page-shell";
 
@@ -48,7 +49,34 @@ export default function ForPartners() {
         />
       </div>
 
-      <div className="mt-24 rounded-3xl bg-[color:var(--color-brand-soft)] p-8 sm:p-12">
+      {/* Ground-level context — a bank tower over a Lagos market. Says
+          the quiet part out loud: your merchants are down there under the
+          umbrellas, and you're on the tower.  We plug the two together. */}
+      <figure className="mt-24 relative">
+        <div className="relative aspect-[16/10] sm:aspect-[21/9] rounded-3xl overflow-hidden">
+          <Image
+            src="/photos/lagos-market-ukpanah.jpg"
+            alt="A view over a Lagos market with a UBA bank tower on the skyline."
+            fill
+            className="object-cover"
+            sizes="(max-width: 1152px) 100vw, 1152px"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/10 to-transparent" />
+          <div className="absolute inset-x-0 bottom-0 p-6 sm:p-10 text-white">
+            <p className="text-xs uppercase tracking-[.16em] text-white/80 font-medium mb-2">
+              The rails between
+            </p>
+            <p className="font-serif text-2xl sm:text-3xl max-w-3xl leading-tight">
+              Your book is the tower. Their business is the market. Pokopay is the wire between.
+            </p>
+          </div>
+        </div>
+        <figcaption className="mt-3 text-xs text-[color:var(--color-ink-faint)]">
+          Photograph by Namnso Ukpanah on Unsplash.
+        </figcaption>
+      </figure>
+
+      <div className="mt-16 rounded-3xl bg-[color:var(--color-brand-soft)] p-8 sm:p-12">
         <p className="text-xs uppercase tracking-[.16em] text-[color:var(--color-brand-deep)] font-medium mb-3">The engine</p>
         <h2 className="font-serif text-3xl sm:text-4xl leading-tight tracking-tight max-w-2xl text-balance">
           Built for Nigerian rails.

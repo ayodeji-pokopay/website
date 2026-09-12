@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import {
   Cpu, Wallet, ScrollText, ShieldCheck, Users, Landmark, ArrowRight,
   Zap, LineChart, ArrowUpRight,
@@ -42,6 +43,29 @@ export default function Home() {
           <Stat label="Terminal families" value="PAX · Telpo · Sunyard" note="POS + Android SDK" />
           <Stat label="Data residency" value="Africa/Lagos" note="Nigerian business day" />
         </div>
+
+        {/* Signature shot — Nigerian trader with a "POS & DATA" sign in
+            frame. Sets the whole page: this platform is built for the
+            merchant working under the umbrella, not the Silicon Valley
+            stock-photo cashier. */}
+        <figure className="mt-16 relative">
+          <div className="relative aspect-[16/10] sm:aspect-[21/9] rounded-3xl overflow-hidden">
+            <Image
+              src="/photos/merchants-tomatoes-buremo.jpg"
+              alt="A Nigerian market trader at her stall of tomatoes and peppers, with a POS & DATA sign in the background."
+              fill
+              className="object-cover"
+              priority
+              sizes="(max-width: 1152px) 100vw, 1152px"
+            />
+            {/* Warm gradient overlay to keep any bottom text legible on
+                small screens if we add one later. */}
+            <div className="absolute inset-0 bg-gradient-to-t from-black/25 via-transparent to-transparent pointer-events-none" />
+          </div>
+          <figcaption className="mt-3 text-xs text-[color:var(--color-ink-faint)]">
+            Photograph by Tunde Buremo on Unsplash.
+          </figcaption>
+        </figure>
       </section>
 
       {/* Three tiles — what we do */}

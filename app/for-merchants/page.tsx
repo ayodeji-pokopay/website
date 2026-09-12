@@ -1,9 +1,12 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import {
   Cpu, Wallet, ScrollText, Receipt, Users, Bell, LineChart,
-  UtensilsCrossed, Smartphone, ArrowRight,
+  UtensilsCrossed, ArrowRight,
 } from "lucide-react";
 import { PageShell, FeatureRow, BottomCTA } from "@/components/page-shell";
+import { TerminalFamilies } from "@/components/terminal-families";
+import { PaxA920 } from "@/components/devices";
 
 export const metadata: Metadata = {
   title: "For merchants",
@@ -61,7 +64,25 @@ export default function ForMerchants() {
         />
       </div>
 
-      <div className="mt-24 rounded-3xl bg-[color:var(--color-surface)] border border-[color:var(--color-line)] p-8 sm:p-12">
+      {/* Human-scale merchant scene — a roadside stall doing exactly the
+          shape of business we build for. Anchors the abstract feature
+          grid above in an actual counter. */}
+      <figure className="mt-20 relative">
+        <div className="relative aspect-[16/10] sm:aspect-[21/9] rounded-3xl overflow-hidden">
+          <Image
+            src="/photos/merchants-plantain-iwara.jpg"
+            alt="Two women at a Nigerian roadside stall selling plantain and snacks."
+            fill
+            className="object-cover"
+            sizes="(max-width: 1152px) 100vw, 1152px"
+          />
+        </div>
+        <figcaption className="mt-3 text-xs text-[color:var(--color-ink-faint)]">
+          Photograph by Ben Iwara on Unsplash.
+        </figcaption>
+      </figure>
+
+      <div className="mt-16 rounded-3xl bg-[color:var(--color-surface)] border border-[color:var(--color-line)] p-8 sm:p-12">
         <div className="grid md:grid-cols-2 gap-10 items-center">
           <div>
             <p className="text-xs uppercase tracking-[.16em] text-[color:var(--color-brand)] font-medium mb-3">
@@ -84,17 +105,15 @@ export default function ForMerchants() {
             </ul>
           </div>
           <div className="flex items-center justify-center">
-            <div className="h-64 w-40 rounded-3xl bg-[color:var(--color-ink)] shadow-[var(--shadow-soft)] relative overflow-hidden">
-              <div className="absolute inset-x-2 top-2 bottom-16 rounded-2xl bg-[color:var(--color-brand-soft)] grid place-items-center">
-                <Smartphone className="h-8 w-8 text-[color:var(--color-brand-deep)]" aria-hidden />
-              </div>
-              <div className="absolute inset-x-2 bottom-2 h-12 rounded-xl bg-white/5 grid place-items-center text-[10px] font-mono text-white/60">
-                POS · v1.4.2
-              </div>
-            </div>
+            {/* Hero device — the A920 is the family most operators
+                recognise on sight. The full trio lives in the
+                TerminalFamilies section below. */}
+            <PaxA920 className="w-full max-w-[280px]" />
           </div>
         </div>
       </div>
+
+      <TerminalFamilies />
 
       <BottomCTA
         title="Let's map your fleet onto Pokopay."
