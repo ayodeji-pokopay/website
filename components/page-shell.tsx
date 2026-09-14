@@ -45,11 +45,11 @@ export function BottomCTA({
   return (
     <div className="mt-16 rounded-3xl border border-[color:var(--color-line)] bg-[color:var(--color-surface)] p-8 flex flex-wrap items-center justify-between gap-6">
       <p className="font-serif text-2xl leading-tight max-w-xl">{title}</p>
-      <div className="flex gap-3">
+      <div className="flex flex-wrap gap-3">
         {primary && (
           <Link
             href={primary.href}
-            className="inline-flex items-center gap-2 bg-[color:var(--color-brand)] text-white px-5 py-3 rounded-full text-sm font-medium hover:bg-[color:var(--color-brand-deep)]"
+            className="inline-flex items-center gap-2 whitespace-nowrap bg-[color:var(--color-brand)] text-white px-5 py-3 rounded-full text-sm font-medium hover:bg-[color:var(--color-brand-deep)]"
           >
             {primary.label} <ArrowRight className="h-4 w-4" />
           </Link>
@@ -57,7 +57,7 @@ export function BottomCTA({
         {secondary && (
           <Link
             href={secondary.href}
-            className="inline-flex items-center gap-2 px-5 py-3 rounded-full text-sm font-medium ring-1 ring-[color:var(--color-line-strong)] hover:bg-[color:var(--color-brand-soft)]"
+            className="inline-flex items-center gap-2 whitespace-nowrap px-5 py-3 rounded-full text-sm font-medium ring-1 ring-[color:var(--color-line-strong)] hover:bg-[color:var(--color-brand-soft)]"
           >
             {secondary.label}
           </Link>

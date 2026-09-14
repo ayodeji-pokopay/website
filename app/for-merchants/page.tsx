@@ -68,7 +68,7 @@ export default function ForMerchants() {
           shape of business we build for. Anchors the abstract feature
           grid above in an actual counter. */}
       <figure className="mt-20 relative">
-        <div className="relative aspect-[16/10] sm:aspect-[21/9] rounded-3xl overflow-hidden">
+        <div className="relative h-0 pb-[62.5%] sm:pb-[42.857%] rounded-3xl overflow-hidden">
           <Image
             src="/photos/merchants-plantain-iwara.jpg"
             alt="Two women at a Nigerian roadside stall selling plantain and snacks."
@@ -108,7 +108,7 @@ export default function ForMerchants() {
             {/* Hero device — the A920 is the family most operators
                 recognise on sight. The full trio lives in the
                 TerminalFamilies section below. */}
-            <PaxA920 className="w-full max-w-[280px]" />
+            <PaxA920 className="w-full h-auto max-w-[280px]" />
           </div>
         </div>
       </div>

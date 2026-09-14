@@ -53,7 +53,8 @@ export default function ForPartners() {
           the quiet part out loud: your merchants are down there under the
           umbrellas, and you're on the tower.  We plug the two together. */}
       <figure className="mt-24 relative">
-        <div className="relative aspect-[16/10] sm:aspect-[21/9] rounded-3xl overflow-hidden">
+        {/* Taller on phones so the overlaid quote doesn't swallow the photo. */}
+        <div className="relative h-0 pb-[100%] sm:pb-[42.857%] rounded-3xl overflow-hidden">
           <Image
             src="/photos/lagos-market-ukpanah.jpg"
             alt="A view over a Lagos market with a UBA bank tower on the skyline."

@@ -49,7 +49,10 @@ export default function Home() {
             merchant working under the umbrella, not the Silicon Valley
             stock-photo cashier. */}
         <figure className="mt-16 relative">
-          <div className="relative aspect-[16/10] sm:aspect-[21/9] rounded-3xl overflow-hidden">
+          {/* Padding-based ratio instead of aspect-ratio: older mobile
+              browsers don't support aspect-ratio, which collapses the box
+              (and the fill image) to zero height. */}
+          <div className="relative h-0 pb-[62.5%] sm:pb-[42.857%] rounded-3xl overflow-hidden">
             <Image
               src="/photos/merchants-tomatoes-buremo.jpg"
               alt="A Nigerian market trader at her stall of tomatoes and peppers, with a POS & DATA sign in the background."

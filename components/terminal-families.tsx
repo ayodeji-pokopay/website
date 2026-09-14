@@ -66,8 +66,12 @@ export function TerminalFamilies({
             key={name}
             className="rounded-3xl border border-[color:var(--color-line)] bg-[color:var(--color-surface)] p-6 sm:p-7 flex flex-col"
           >
-            <div className="aspect-square rounded-2xl bg-[color:var(--color-canvas)] border border-[color:var(--color-line)] p-4 flex items-center justify-center">
-              <Device className="w-full h-full max-w-[280px]" />
+            {/* No aspect-ratio / flex centering here: iOS Safari mis-sizes an
+                SVG whose height depends on a flex + aspect-ratio parent and
+                the card grows without bound. The SVG's own 400x400
+                attributes give it an intrinsic square instead. */}
+            <div className="rounded-2xl bg-[color:var(--color-canvas)] border border-[color:var(--color-line)] p-4">
+              <Device className="block mx-auto w-full h-auto max-w-[280px]" />
             </div>
             <p className="mt-5 text-xs uppercase tracking-[.14em] text-[color:var(--color-brand)] font-medium">
               {tagline}
